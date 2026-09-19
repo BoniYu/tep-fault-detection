@@ -58,3 +58,9 @@ pip install -r requirements.txt
 cd src
 python verify_data.py
 ```
+
+## Reference
+
+Downs, J.J. and Vogel, E.F. (1993). "A plant-wide industrial process
+control problem." *Computers & Chemical Engineering*, 17(3), 245-255.
+https://doi.org/10.1016/0098-1354(93)80018-I
