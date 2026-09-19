@@ -64,3 +64,15 @@ python verify_data.py
 Downs, J.J. and Vogel, E.F. (1993). "A plant-wide industrial process
 control problem." *Computers & Chemical Engineering*, 17(3), 245-255.
 https://doi.org/10.1016/0098-1354(93)80018-I
+
+Chiang, L.H., Russell, E.L., and Braatz, R.D. (2001). *Fault Detection
+and Diagnosis in Industrial Systems*. Springer-Verlag London.
+(Source of the classic small TEP dataset used here, and of the
+commonly cited observation that faults 3, 9, and 15 are statistically
+difficult to detect in this data — verified independently in this
+project's own EDA.)
+
+**Download source**: http://web.mit.edu/braatzgroup/TE_process.zip
+(hosted by the Braatz Research Group, MIT). Not included in this repo —
+see Setup instructions above for where to place the files after
+downloading.
