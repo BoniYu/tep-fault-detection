@@ -1,3 +1,32 @@
+## Progress log
+
+19/9/2026 — Project setup
+- Built project folder structure: `data/raw/`, `src/`, `notebooks/`
+- Set up a Python virtual environment (`.venv`) with
+  `requirements.txt` listing: numpy, pandas, scikit-learn, matplotlib,
+  seaborn, jupyter
+- Wrote `src/data_loader.py`:
+  - `load_fault_set(fault_number, split)` — loads one file, auto-fixes
+    the d00.dat transpose issue
+  - `load_all()` — loads and combines all 44 files into train/test
+    DataFrames
+- Wrote `src/verify_data.py` to sanity-check the loader
+- **Verified**: Train shape (10580, 53), Test shape (21120, 53), all
+  22 faults present in both — matches expected row counts
+  (500 + 21×480 = 10580 train; 22×960 = 21120 test)
+
+## Next steps
+
+- [ ] EDA: visually compare normal vs. faulty runs
+- [ ] Check faults 3, 9, 15 for detectability (commonly excluded in
+      literature — confirm before deciding)
+- [ ] Decide feature engineering approach (raw values vs. rate-of-change
+      vs. rolling stats)
+- [ ] Baseline model (Random Forest or XGBoost)
+- [ ] Evaluate and iterate
+
+
+
 19/9/2026 — EDA: initial exploration
 
 - Switched to a Jupyter notebook (`notebooks/eda.ipynb`) for exploratory
