@@ -23,8 +23,8 @@
 - [ ] Decide feature engineering approach (raw values vs. rate-of-change
       vs. rolling stats)
 - [ ] Baseline model (Random Forest or XGBoost)
+- [ ] Baseline model (Random Forest): train and evaluate twice — once with all 20 faults, once excluding faults 3/9/15 — compare results
 - [ ] Evaluate and iterate
-
 
 
 19/9/2026 — EDA: initial exploration
