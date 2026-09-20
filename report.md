@@ -171,6 +171,17 @@ high-dimensional, correlated features natively.
   overall accuracy) to evaluate
 - Consider PCA-reduced features specifically for the LSTM stretch goal
 
+### Note on the 160-sample fault injection point
+
+The original Downs & Vogel (1993) paper defines the process simulator
+and the 20 faults, but does not specify a train/test split or a fixed
+fault injection point — it only recommends 24-48h simulation runs to
+observe full effects. The convention used in this dataset (test runs:
+960 samples/48h, fault introduced at sample 160/8h) comes from how the
+Chiang/Russell/Braatz dataset itself was generated, not from the
+original paper. Confirmed empirically in EDA (visual inspection +
+deviation-based onset detection across all 21 faulty test runs).
+
 
 
 ## Modeling
