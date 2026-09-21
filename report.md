@@ -217,6 +217,31 @@ finding that its signature lives in the compensating control variable
 and Normal itself (F1 0.3-0.5) — worth investigating further, possibly
 via a full confusion matrix, before concluding the model is complete.
 
+### Confusion matrix findings
+
+Beyond faults 3/9/15, faults 10, 16, and 20 remain the weakest
+performers (F1 0.31-0.55) even after filtering. Confusion matrix
+analysis reveals:
+
+- **Faults 10 and 16 show strong mutual confusion**: true Fault 10 was
+  predicted as Fault 16 in 166/800 cases; true Fault 16 was predicted
+  as Fault 10 in 259/800 cases — far more than confusion with any
+  other fault. Fault 10 is documented (C feed temperature, stream 4,
+  random variation); Fault 16 is undocumented ("Unknown") in the
+  original paper.
+- **Fault 20 ("Unknown")** is comparably weak but less entangled with
+  a specific fault — its largest confusion is with Normal operation
+  (100/800), suggesting a genuinely distinguishable but subtle effect
+  rather than fundamental overlap with another fault.
+
+**Interpretation**: two of the three weakest non-excluded faults (16,
+20) are among the paper's undocumented "Unknown" fault types. This is
+plausible, not coincidental — an undisclosed fault whose effects
+closely resemble a known disturbance (as with 16 vs. 10) would be a
+reasonable choice for a benchmark designer to leave undocumented, since
+its physical mechanism may be genuinely hard to pin down or
+distinguish even by domain experts.
+
 ## Conclusions
 
 *(to be added)*
