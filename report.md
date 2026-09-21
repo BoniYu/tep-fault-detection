@@ -234,13 +234,13 @@ analysis reveals:
   (100/800), suggesting a genuinely distinguishable but subtle effect
   rather than fundamental overlap with another fault.
 
-**Interpretation**: two of the three weakest non-excluded faults (16,
-20) are among the paper's undocumented "Unknown" fault types. This is
-plausible, not coincidental — an undisclosed fault whose effects
-closely resemble a known disturbance (as with 16 vs. 10) would be a
-reasonable choice for a benchmark designer to leave undocumented, since
-its physical mechanism may be genuinely hard to pin down or
-distinguish even by domain experts.
+**Interpretation**: initial inspection suggested a link between
+"Unknown" fault status and weak detection, but checking all five
+Unknown faults (16-20) disproves this — faults 17 and 18 score strongly
+(F1 0.90, 0.85), while 16 and 20 score poorly (F1 0.34, 0.55). Being
+undocumented doesn't predict detectability; difficulty is specific to
+each fault's actual (undisclosed) physical effect on the process, not
+its documentation status.
 
 ## Conclusions
 
