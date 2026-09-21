@@ -263,6 +263,30 @@ physically meaningful control relationships already identified in EDA
 uninterpretable patterns — a good sign that its predictions are
 grounded in real process behavior, not spurious correlations.
 
+### XGBoost vs. Random Forest
+
+Trained XGBoost (100 trees) on the same filtered dataset (excluding
+3/9/15) for direct comparison.
+
+| Metric | Random Forest | XGBoost |
+|---|---|---|
+| Overall accuracy | 70.9% | **77.8%** |
+
+**Broad improvement across most faults**, notably faults 21 (F1 0.45
+-> 0.99) and 5 (0.64 -> 0.96). Faults 10 and 16 (previously the
+strongest mutual confusion pair) improved meaningfully but did not
+resolve: true-10-called-16 dropped from 166/800 to 99/800, and
+true-16-called-10 dropped from 259/800 to 226/800 — confusion reduced
+in both directions, but still substantial.
+
+**Interpretation**: XGBoost's sequential error-correction approach
+measurably reduces systematic confusion between visually similar
+faults, but a meaningful gap remains for faults 10/16 even with a
+stronger algorithm. This suggests their distinguishing signal may
+depend on temporal/sequential patterns not visible in single-row
+snapshots — a candidate case for the LSTM stretch goal, which can use
+time-series context neither tree-based model has access to.
+
 ## Conclusions
 
 *(to be added)*
