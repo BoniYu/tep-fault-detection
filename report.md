@@ -186,7 +186,36 @@ deviation-based onset detection across all 21 faulty test runs).
 
 ## Modeling
 
-*(to be added)*
+### Baseline: Random Forest
+
+Trained a Random Forest (100 trees) on two dataset variants, per the
+plan from EDA: all 22 fault classes, and excluding faults 3/9/15.
+
+| Metric | All faults | Excluding 3/9/15 |
+|---|---|---|
+| Overall accuracy | 58.4% | 70.9% |
+| Normal (0) recall | 0.32 | 0.62 |
+| Normal (0) precision | 0.70 | 0.83 |
+
+**Faults 3, 9, 15 confirmed undetectable by the model** (F1-scores
+0.12-0.14 in the full model) — consistent with EDA findings.
+
+**Root cause of Normal's poor performance identified**: confusion
+matrix analysis showed 74% of all Normal misclassifications were
+specifically confused with faults 3, 9, and 15 — not spread evenly
+across faults. Removing these three faults nearly doubled Normal's
+recall (0.32 -> 0.62), confirming they were actively degrading
+performance on other classes, not just failing on their own.
+
+**Strong performers** (F1 > 0.90): faults 1, 2, 4, 6, 7, 14, 17 — with
+fault 4 notably strong (0.94) despite its effect being invisible in
+the "obviously affected" variable (XMEAS_9), confirming the EDA
+finding that its signature lives in the compensating control variable
+(XMV_10) instead.
+
+**Remaining weak performers** even after filtering: faults 10, 16, 20,
+and Normal itself (F1 0.3-0.5) — worth investigating further, possibly
+via a full confusion matrix, before concluding the model is complete.
 
 ## Conclusions
 
