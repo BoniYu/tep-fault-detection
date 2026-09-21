@@ -287,6 +287,29 @@ depend on temporal/sequential patterns not visible in single-row
 snapshots — a candidate case for the LSTM stretch goal, which can use
 time-series context neither tree-based model has access to.
 
+### Hyperparameter tuning
+
+Used RandomizedSearchCV (15 combinations, 3-fold cross-validation) to
+tune XGBoost. Best parameters: n_estimators=200, max_depth=7,
+learning_rate=0.05, subsample=0.7.
+
+| Metric | XGBoost (default) | XGBoost (tuned) |
+|---|---|---|
+| Overall accuracy | 77.8% | **78.9%** |
+
+Modest improvement (+1.1 points). Faults 10, 13, 16 — the persistent
+weak spots throughout this project — showed little to no improvement
+from tuning (10: 0.46->0.46, 13: 0.37->0.37, 16: 0.47->0.49),
+reinforcing that their difficulty isn't a matter of suboptimal model
+settings, but a more fundamental limitation of single-row snapshot
+classification.
+
+**Conclusion**: tuning provides incremental gains but does not resolve
+the core remaining weaknesses. This strengthens the case that faults
+10, 13, and 16 require temporal/sequential information not available
+to snapshot-based models — a clear, evidence-based motivation for the
+LSTM stretch goal.
+
 ## Conclusions
 
 *(to be added)*
