@@ -336,6 +336,23 @@ from single/short-window snapshots of this dataset, rather than a
 model-quality problem. This is the clearest, most specific
 justification yet for the LSTM stretch goal, which could use full
 sequence information these approaches still can't access.
+
+### Logistic Regression comparison (linear baseline)
+
+Trained a standardized Logistic Regression as a sanity check on the
+assumption that this problem requires nonlinear modeling.
+
+| Model | Accuracy |
+|---|---|
+| Logistic Regression | 43.1% |
+| Random Forest | 70.7% |
+| XGBoost (tuned + trend features) | **81.5%** |
+
+**Confirms the assumption made at the start of modeling**: the
+relationships between process variables and fault type are
+substantially nonlinear. A linear model captures well under half of
+what tree-based models achieve, validating the choice to prioritize
+Random Forest and XGBoost as the primary approaches for this problem.
 ## Conclusions
 
 *(to be added)*
