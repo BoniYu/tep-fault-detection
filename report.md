@@ -310,6 +310,32 @@ the core remaining weaknesses. This strengthens the case that faults
 to snapshot-based models — a clear, evidence-based motivation for the
 LSTM stretch goal.
 
+### Trend features (rate-of-change and rolling averages)
+
+Added rate-of-change and rolling-average (window=5) columns for the
+top 15 most important variables (by feature importance), to test
+whether temporal trend information could resolve the model's
+persistent weak spots.
+
+| Metric | Tuned XGBoost | + Trend features |
+|---|---|---|
+| Overall accuracy | 78.9% | **81.5%** |
+
+**Improvement is real but unevenly distributed.** Several faults
+improved meaningfully (11: 0.73->0.90, 12: 0.61->0.71, 19: 0.65->0.79),
+but faults 10 and 13 — the two most persistent weak performers
+throughout this project — showed effectively no change (10: 0.46->0.46,
+13: 0.37->0.36).
+
+**Conclusion**: trend features are a genuine, worthwhile addition
+overall, but they specifically do not resolve faults 10 and 13. Across
+four different interventions now (filtering, stronger model, tuning,
+trend features), these two faults have remained essentially flat —
+strong evidence they may be near a real ceiling for what's recoverable
+from single/short-window snapshots of this dataset, rather than a
+model-quality problem. This is the clearest, most specific
+justification yet for the LSTM stretch goal, which could use full
+sequence information these approaches still can't access.
 ## Conclusions
 
 *(to be added)*
