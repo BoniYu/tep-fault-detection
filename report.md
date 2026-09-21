@@ -242,6 +242,27 @@ undocumented doesn't predict detectability; difficulty is specific to
 each fault's actual (undisclosed) physical effect on the process, not
 its documentation status.
 
+### Feature importance
+
+Top variables by Random Forest importance (filtered model) are
+dominated by manipulated variables (valves) paired with the
+measurements they directly control — XMV_4 (A/C feed valve), XMV_10
+(reactor cooling water flow), XMEAS_21 (reactor cooling water outlet
+temp), XMEAS_1 (A feed rate), and the stripper steam trio (XMV_9,
+XMEAS_19, XMEAS_18) all rank in the top 9.
+
+**XMV_10 ranks #2 overall**, directly confirming the EDA finding that
+Fault 4's signature lives in the compensating cooling water valve
+rather than reactor temperature itself — this was discovered by manual
+inspection of a single fault, and is now independently validated by
+the model's learned importances across all 19 faults.
+
+**Interpretation**: the model's feature importances align closely with
+physically meaningful control relationships already identified in EDA
+(correlation analysis) rather than relying on obscure or
+uninterpretable patterns — a good sign that its predictions are
+grounded in real process behavior, not spurious correlations.
+
 ## Conclusions
 
 *(to be added)*
