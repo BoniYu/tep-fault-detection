@@ -22,6 +22,11 @@ applied ML — playing to a process-safety/industrial niche.
 - Known quirk: `d00.dat` is stored transposed (52, 500) vs. every other
   file (n_samples, 52) — handled automatically in `data_loader.py`.
 
+## Future Work
+
+ An LSTM approach was explored on the `lstm-experiment` branch as a learning exercise; 
+ it underperformed the XGBoost model on this dataset (see LSTM_REPORT.md on that branch for full analysis)
+
 
 ## Setup (for future reference)
 
