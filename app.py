@@ -21,8 +21,6 @@ baseline_row = app_config["baseline_row"]
 baseline_full = app_config["baseline_full"]
 top_10_variables = app_config["top_10_variables"]
 
-st.subheader("Adjust key variables")
-
 if st.button("Reset to baseline"):
     for var in top_10_variables:
         st.session_state[var] = baseline_row[var]
@@ -39,17 +37,6 @@ for var in top_10_variables:
         max_value=float(high),
         value=float(default),
         key=var
-    )
-
-user_values = {}
-for var in top_10_variables:
-    low, high = variable_ranges[var]
-    default = baseline_row[var]
-    user_values[var] = st.slider(
-        describe_column(var),
-        min_value=float(low),
-        max_value=float(high),
-        value=float(default)
     )
 
 
@@ -74,9 +61,6 @@ def build_full_input(user_values, baseline_row, baseline_full, pair_relationship
 
 full_input = build_full_input(user_values, baseline_row, baseline_full, pair_relationships, feature_columns)
 
-
-
-
 input_df = pd.DataFrame([full_input])[feature_columns]
 
 prediction_encoded = model.predict(input_df)[0]
@@ -87,4 +71,4 @@ confidence = probabilities[prediction_encoded]
 
 st.subheader("Prediction")
 st.write(f"**{describe(prediction)}**")
-st.write(f"Confidence: {confidence:.1%}")    
+st.write(f"Confidence: {confidence:.1%}")
